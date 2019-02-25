@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import model.Participant;
 
 public class DetailCourseController {
 
@@ -31,13 +32,13 @@ public class DetailCourseController {
     private TextField tf_particip_lastname;
 
     @FXML
-    private TableView<?> tbl_particip;
+    private TableView<Participant> tbl_particip;
 
     @FXML
-    private TableColumn<?, ?> col_particip_name;
+    private TableColumn<Participant, String> col_particip_name;
 
     @FXML
-    private TableColumn<?, ?> col_particip_lastname;
+    private TableColumn<Participant, String> col_particip_lastname;
 
     @FXML
     void deleteParticipant(ActionEvent event) {
@@ -47,6 +48,14 @@ public class DetailCourseController {
     @FXML
     void saveParticipant(ActionEvent event) {
 
+    }
+    public void initialize(){
+        // ustawienie danych wybranego kursu
+        lbl_course_name.setText(CourseController.c_selected.getCourse_name());
+        lbl_course_category.setText(CourseController.c_selected.getCourse_category());
+        lbl_course_date.setText(CourseController.c_selected.getCourse_date().toString());
+        lbl_course_trainer.setText(CourseController.c_selected.getCourse_trainer());
+        lbl_course_particip.setText(CourseController.c_selected.getNoParticipants());
     }
 
 }
